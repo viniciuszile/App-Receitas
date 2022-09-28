@@ -8,7 +8,7 @@ const saltRounds = 10;
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "senai115",
+  password: "",
   database: "banco",
 });
 
@@ -43,7 +43,7 @@ app.post("/register", (req, res) => {
   });
 });
 
-app.post("/login", (req, res) => {
+app.post("/Login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 

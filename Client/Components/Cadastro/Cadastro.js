@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react'
 import { StyleSheet, Text, View,TextInput,TouchableOpacity, Button } from 'react-native';
 import * as yup from "yup";
 import { ErrorMessage, Formik, Form, Field } from "formik";
@@ -8,21 +6,6 @@ import Axios from "axios";
 
 export default function Cadastro ({navigation}){
 
-const [email,setEmail] = useState('');
-const [password,setPassword] = useState('');
-
-    const handleLogin = (values) => {
-        Axios.post("http://localhost:3001/login", {
-          email: values.email,
-          password: values.password,
-        }).then((response) => {
-          alert(response.data.msg);
-          if (response.data.msg == "Usuário logado"){
-            navigation.navigate("Login")
-          }
-        });
-      };
-    
       const handleRegister = (values) => {
         Axios.post("http://localhost:3001/register", {
           email: values.email,
@@ -34,17 +17,6 @@ const [password,setPassword] = useState('');
         });
       };
       
-      const validationsLogin = yup.object().shape({
-        email: yup
-          .string()
-          .email("email inválido")
-          .required("O email é obrigatório"),
-        password: yup
-          .string()
-          .min(8, "A senha deve ter pelo menos 8 caracteres")
-          .required("A senha é obrigatória"),
-      });
-    
       const validationsRegister = yup.object().shape({
         email: yup
           .string()
@@ -61,50 +33,59 @@ const [password,setPassword] = useState('');
       });
     
 
-      console.log(email)
 
     return(
       <View style={styles.container} >
 
-            <h1 style={styles.titulo}>
-            Faça Seu Login</h1>
-
-            <Formik
-              initialValues={{}}
-              onSubmit={handleLogin}
-              validationSchema={validationsLogin}
-            >
-              <Form style={styles.login_form}>
-
+        <h1>Cadastro</h1>
+              <Formik
+                initialValues={{}}
+                onSubmit={handleRegister}
+                validationSchema={validationsRegister}
+              >
+                <Form style={styles.login_form}>
+                  
                 <View style={styles.login_form_group} >
 
-                  <Field name="email" style={styles.form_field_email}  placeholder="Insira Seu Email " />
+                    <Field name="email" style={styles.form_field_email} placeholder="Email" />
 
-                  <ErrorMessage
-                    component="span"
-                    name="email"
-                    style={styles.form_error}
-                  />
-                </View>
+                    <ErrorMessage
+                      component="span"
+                      name="email"
+                      style={styles.form_error}
+                    />
 
+                  </View>
 
-                {/*Outro campo*/}
-                <View style={styles.login_form_group} >
-                  <Field name="password" style={styles.form_field_senha}  placeholder="Insira Sua Senha" />
-      
-                  <ErrorMessage
-                    component="span"
-                    name="password"
-                    style={styles.form_error}
-                  />
-                </View>
-      
-                <button style={styles.botao} className="button" type="submit" onSubmit={validationsLogin}>
+                  <View style={styles.login_form_group} >
+                    <Field name="password" style={styles.form_field_senha}  placeholder="Senha" />
+
+                    <ErrorMessage
+                      component="span"
+                      name="password"
+                      style={styles.form_error}
+                    />
+                  </View>
+
+                <View style={styles.login_form_group} > 
+                    <Field
+                      name="confirmation"
+                      style={styles.form_field_senha} 
+                      placeholder="Senha"
+                    />
+
+                    <ErrorMessage
+                      component="span"
+                      name="confirmation"
+                      style={styles.form_error}
+                    />
+                  </View>
+
+                  <button style={styles.botao} type="submit">
                   <Text style={styles.texto_botao}>Login</Text>
-                </button>
-              </Form>
-            </Formik>
-        
+                  </button>
+                </Form>
+              </Formik>             
         </View>
 
 
@@ -159,4 +140,3 @@ const styles = StyleSheet.create({
       fontSize : 17,
     }
 });
-
