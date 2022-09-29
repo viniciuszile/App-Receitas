@@ -11,7 +11,7 @@ export default function Administrador ({navigation}){
                 onPress={ () => navigation.navigate("Home")}>
                 Voltar</Text>
             <View style={styles.container}>
-                <Text>Bem vindo ADM
+                <Text>Bem Vindo Adm
                 </Text>
             </View>
 
