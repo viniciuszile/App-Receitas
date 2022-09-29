@@ -1,0 +1,23 @@
+create database banco;
+use banco;
+
+create table usuarios(
+idusuarios int(4) primary key auto_increment,
+email varchar(50),
+password varchar(200)
+);
+
+create table image(
+id int not null auto_increment,
+nome_receita varchar(100),
+modo_preparo text,
+ingredientes text,
+categoria enum("salgado","doces"),
+type varchar (200),
+name varchar(200),
+data LONGBLOB,
+PRIMARY KEY(id));
+
+select * from image;
+
+select * from usuarios;

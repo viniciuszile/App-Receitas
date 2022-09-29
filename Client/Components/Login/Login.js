@@ -10,7 +10,7 @@ export default function Login ({navigation}){
     }
 
     const handleLogin = (values) => {
-        Axios.post("http://localhost:3001/login", {
+        Axios.post("http://localhost:3005/login", {
           email: values.email,
           password: values.password,
         }).then((response) => {
