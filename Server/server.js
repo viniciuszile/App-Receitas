@@ -17,6 +17,13 @@ app.use(myconn(mysql, {
   database: 'banco'
 }))
 
+const db = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "banco",
+});
+
 app.use(express.json());
 app.use(cors());
 app.use(cors())

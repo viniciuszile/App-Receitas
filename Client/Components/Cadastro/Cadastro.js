@@ -7,7 +7,7 @@ import Axios from "axios";
 export default function Cadastro ({navigation}){
 
   const handleRegister = (values) => {
-    Axios.post("http://localhost:3005/register", {
+    Axios.post("http://localhost:3010/register", {
     email: values.email,
     password: values.password,
     }).then((response) => {

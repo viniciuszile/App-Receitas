@@ -1,4 +1,4 @@
-const express = require('express')
+ const express = require('express')
 const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
@@ -15,6 +15,9 @@ const diskstorage = multer.diskStorage({
 const fileUpload = multer({
     storage: diskstorage
 }).single('image')
+
+
+const db = require('../server.js')
 
 
 router.get('/images/get', (req, res) => {
