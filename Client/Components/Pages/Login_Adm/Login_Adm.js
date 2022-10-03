@@ -13,10 +13,13 @@ const Adm = () => {
     }
     return(
         <View>
-            <Text 
-            style={styles.voltar}
-            onPress={ () => navigation.navigate("Login")}>
-            Voltar</Text>
+            <View style={styles.header}>
+
+            </View>
+
+            <Text style={styles.voltar} onPress={() => navigation.navigate("Home")}>
+            Voltar
+            </Text>
 
             <View style={styles.container}>
                 <Text style={styles.titulo}> Seja Bem Vindo !!! </Text>
@@ -44,6 +47,22 @@ const styles = StyleSheet.create({
         alignItems: "center",
         textAlign: "center",
     },
+    header:{
+        width: "100%",
+        height: 40,
+        backgroundColor: "#FF5200" ,
+      },  
+      voltar: {
+        width: 62,
+        height: 30,
+        padding: 1,
+        marginBottom: 5,
+        marginRight: 330,
+        fontSize: 22,
+        textAlign: "left",
+        color: "#FF5200",
+        backgroundColor: "",
+      },
     input:{
         width: 275,
         height: 35,
@@ -62,11 +81,6 @@ const styles = StyleSheet.create({
         fontSize: 25,
         marginTop: 100,
       },
-    voltar:{
-        textAlign: 'left',
-        color: "#FF5200",
-        fontSize: 20,
-    },
     titulo:{
         color: '#FF5200',
         marginTop: 100,

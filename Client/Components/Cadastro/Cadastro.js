@@ -37,10 +37,13 @@ export default function Cadastro ({navigation}){
     <View>
       
       {/* Botao de voltar a home  */}
-      <Text 
-        style={styles.voltar}
-        onPress={ () => navigation.navigate("Home")}>
-        Voltar</Text>
+      <View style={styles.header}>
+
+      </View>
+
+      <Text style={styles.voltar} onPress={() => navigation.navigate("Home")}>
+          Voltar
+      </Text>
 
       {/* Container geral  */}
        <View style={styles.container} >
@@ -116,16 +119,30 @@ const styles = StyleSheet.create({
         alignItems: "center",
         textAlign: "center",
     },
+    header:{
+      width: "100%",
+      height: 40,
+      backgroundColor: "#FF5200" ,
+    },  
+    voltar: {
+      width: 62,
+      height: 30,
+      padding: 1,
+      marginBottom: 5,
+      marginRight: 330,
+      fontSize: 22,
+      textAlign: "left",
+      color: "#FF5200",
+    },
     titulo:{
       color: '#FF5200',
-      marginTop: 100,
+      marginTop: 50,
     },
     form_field_email:{
       width: 250,
       height: 30,
       color: "#000",
       fontSize: 17,
-      // marginTop: 80,
       borderRadius: 10,
     },
     form_field_senha:{
@@ -143,7 +160,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#FF5200",
       textAlign: "center",
       borderRadius: 10,
-      marginTop: 60,
+      marginTop: 40,
     },
     texto_botao:{
       color: '#FFF',
@@ -176,9 +193,4 @@ const styles = StyleSheet.create({
       color: "red",
       fontSize : 17,
     },
-    voltar:{
-      textAlign: 'left',
-      color: "#FF5200",
-      fontSize: 20,
-  },
 });

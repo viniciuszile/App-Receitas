@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   Text,
   TextInput,
+  Image,
 } from "react-native";
 import { Card, Title, Paragraph } from "react-native-paper";
+// import { Icon } from "@rneui/themed";
 
 
 
@@ -95,82 +97,57 @@ export default function Administrador({navigation}) {
 
 
   return (
-      <View>
+      <View style={styles.container0}>
+
+        <View style={styles.header}>
+
+        </View>
+
+        <Text style={styles.voltar} onPress={() => navigation.navigate("Home")}>
+            Voltar
+        </Text>
       
-      <Text style={styles.voltar} onPress={() => navigation.navigate("Home")}>
-        Voltar
-      </Text>
 
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            {/* <input type="file" id="fileinput" onChange={selectedHandler} /> */}
-            {/* <Button title="enviar imagem:" onPress={sendHandler}></Button> */}
+        <View style={styles.container}>
 
-            <Card style={{ width: 300, height: 300, alignItems: "center" }}>
-            <Card.Content style={{ alignItems: "center" }}>
-                <Title>Informaçoes da receita:</Title>
+            <Card style={styles.Card}>
+              
+            <Card.Content style={styles.card_content} >
 
-                <Paragraph>insira o nome:</Paragraph>
-                <TextInput
-                style={{
-                    borderColor: "black",
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    padding: 1,
-                }}
-                onChangeText={setNome}
-                />
+                <Text style={styles.titulo}> Informaçoes da receita:</Text>
 
-                <Paragraph>insira os ingredientes:</Paragraph>
-                <TextInput
-                style={{
-                    borderColor: "black",
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    padding: 1,
-                }}
-                onChangeText={setIngredientes}
-                />
+                <Text style={styles.subtitulo}>Insira o Nome Da Receita</Text>
+                <TextInput style={styles.input} onChangeText={setNome}/>
 
-                <Paragraph>insira o modo de preparo:</Paragraph>
-                <TextInput
-                style={{
-                    borderColor: "black",
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    padding: 1,
-                }}
-                onChangeText={setPreparo}
-                />
+                <Text style={styles.subtitulo}>Insira Os Ingredientes Da Receita</Text>
+                <TextInput style={styles.input} onChangeText={setIngredientes} />
 
-                <Paragraph>insira a Categoria:</Paragraph>
-                <TextInput
-                style={{
-                    borderColor: "black",
-                    borderRadius: 5,
-                    borderWidth: 1,
-                    padding: 1,
-                }}
-                onChangeText={setCategoria}
-                />
+                <Text style={styles.subtitulo}>Insira o Modo De Preparo Da Receita</Text>
+                <TextInput style={styles.input} onChangeText={setPreparo} />
+        
 
-                <Paragraph>insira a Foto da receita:</Paragraph>
-                <input type="file" id="fileinput" onChange={selectedHandler} />
-            </Card.Content>
-            <TouchableOpacity
-                style={{
-                backgroundColor: "black",
-                alignItems: "center",
-                borderRadius: 5,
-                width: 150,
-                height: 20,
-                
-                }}
-                onPress={sendHandler}
-            >
-                <Text style={{ color: "white", fontWeight: 700 }}>
+                <Text style={styles.subtitulo}> Insira a Categoria Da Receita</Text>
+                <TextInput style={styles.input} onChangeText={setCategoria} />
+        
+                <Text style={styles.subtitulo}> Insira a Foto Da Receita</Text>
+                {/* <Image 
+                style={styles.imagem}
+                source = {require("../../Images/clips.png")}
+                /> */}
+                <input style={{marginLeft: 1,width:120,}} type="file" id="fileinput" onChange={selectedHandler} />
+
+                <TouchableOpacity
+                style={styles.botao}
+                onPress={sendHandler}>
+
+                <Text style={styles.texto_botao}>
                 Criar receita
                 </Text>
             </TouchableOpacity>
+
+            </Card.Content>
+
+   
             </Card>
 
         
@@ -181,15 +158,81 @@ export default function Administrador({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
+  container0:{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    backgroundColor:"#fff"
+  },  
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    backgroundColor:"#fff"
     },
-    voltar:{
-        textAlign: 'left',
-        color: "#FF5200",
-        fontSize: 20,
+    header:{
+      width: "100%",
+      height: 40,
+      backgroundColor: "#FF5200" ,
+    },  
+    voltar: {
+      width: 62,
+      height: 30,
+      padding: 1,
+      marginBottom: 5,
+      marginRight: 330,
+      fontSize: 22,
+      textAlign: "left",
+      backgroundColor:"#fff",
+      color: "#FF5200",
+    },
+    card:{
+      width: 300, 
+      height: 300, 
+      alignItems: "center"
+    },
+    card_content:{
+      alignItems: "center",
+      backgroundColor:"#fff" 
+    },
+    titulo:{
+      fontSize: 30,
+      color: '#0A380E',
+      margin: 10,
+    },
+    subtitulo:{
+      fontSize: 18,
+      color: '#FF5200',
+      margin: 5,
+    },
+    input:{
+      width: 250,
+      height: 30,
+      color: "#000",
+      fontSize: 17,
+      borderWidth: 1,
+      borderColor: '#000',
+      borderRadius: 10,
+    },
+    imagem: {
+      backgroundColor:"grey",
+      width: 100,
+      height: 100,
+    },
+    botao:{
+      width: 160,
+      height: 35,
+      justifyContent: "center",
+      backgroundColor: "#0A380E",
+      textAlign: "center",
+      borderRadius: 10,
+      marginTop: 40,
+    },
+    texto_botao:{
+      color: '#FFF',
+      justifyContent: "center", 
+      fontSize: 20,
     },
 });

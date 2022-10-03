@@ -7,7 +7,7 @@ import {
   Image,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Card, Title, Paragraph } from "react-native-paper";
+import { Card, Title, Paragraph, TextInput } from "react-native-paper";
 import Seta from "../../Images/seta.png"
 
 export default function Receitas({ navigation }) {
@@ -33,34 +33,32 @@ export default function Receitas({ navigation }) {
     navigation.navigate("VerReceitas", {
         id:id_params
     })
-    // console.log(id_params);
   }
 
   return (
-    
-
-      
-        
+  
             <View style={{ alignItems: "center" ,backgroundColor:"#F5E1C4",margin: 0,}}>
+              
+              <View style={styles.header}>
 
+              </View>
 
-              <Image 
-                style={styles.Logo}
-                source = {require("../../Images/seta.png")}
-                onPress={() => navigation.navigate("Home")}
-                />
+            <Text style={styles.voltar} onPress={() => navigation.navigate("Home")}>
+                    Voltar
+                  </Text>
 
-            {/* <Text style={styles.voltar} onPress={() => navigation.navigate("Home")}>
-            Voltar
-            </Text> */}
+            <TextInput 
+            style={styles.input}
+            placeholder={"Filtrar Receitas"}
+            placeholderTextColor="#000"
+             >
+            </TextInput>
 
             {imageList.map((image) => (
             <Card
                 style={styles.card}
             >
                 <Card.Content>
-                {/* <Title> </Title> */}
-                {/* <Paragraph>{image}</Paragraph> */}
                 <Card.Cover
                     source={{ uri: "http://localhost:3010/" + image }}
                     style={styles.imagem}
@@ -77,7 +75,6 @@ export default function Receitas({ navigation }) {
                 </TouchableOpacity>
                 </center>
 
-                {/* <Paragraph>ID da imagem: {image.substr(0, 1)}</Paragraph> */}
                 </Card.Content>
             </Card>
             ))}
@@ -93,15 +90,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    backgroundColor: "#F5E1C4"
+    backgroundColor: ""
   },
+  header:{
+    width: "100%",
+    height: 40,
+    backgroundColor: "#FF5200" ,
+  },  
   voltar: {
-    fontSize: 15,
+    width: 62,
+    height: 30,
+    padding: 1,
+    marginBottom: 5,
+    marginRight: 330,
+    fontSize: 22,
     textAlign: "left",
     color: "#FF5200",
-    backgroundColor: "#0A380E",
-    margin: 15,
-    marginRight: 350,
+    backgroundColor: "",
   },
   botao:{
       width: 175,
@@ -131,8 +136,20 @@ const styles = StyleSheet.create({
     height: 200
   },
   Logo: {
-    width: 300,
-    height: 300,
-    marginTop: 70
-  },
+    width: 50,
+    height: 50,
+    marginTop: 70,
+    margin: 15,
+    marginRight: 350,
+    },
+  input:{
+    width: 250,
+    height: 30,
+    borderWidth: 1,
+    borderColor: "#FF5200",
+    borderRadius: 5,
+    backgroundColor: "#C7BEBE",
+    textAlign:"center",
+
+  }
 });

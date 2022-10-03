@@ -72,7 +72,7 @@ router.post('/images/post', fileUpload,(req, res) => {
 router.get('/images/verReceitas/:id', (req, res) => {
     req.getConnection((err, conn) => {
         let index = req.params.id
-        let query = `SELECT nome_receita,modo_preparo,ingredientes,categoria FROM IMAGE where id = ${index}`
+        let query = `SELECT  * FROM IMAGE where id = ${index}`
         if(err) return res.status(500).send('server error')
         conn.query(query, (err, rows) => {
             if(err) return res.status(500).send('server error')
